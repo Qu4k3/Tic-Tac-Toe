@@ -41,24 +41,35 @@ public class Main {
         p2_name = user_input.next();
         Player p2 = new Player(p2_name, p2_ficha);
 
-        System.out.println("\n" + p1.getName() + " comença: ");
-
         System.out.println("\n" + ANSI_YELLOW + p1.getName() + ANSI_RESET + " comença:\n");
 
         Board board = new Board(p1,p2);
 
         while (running){
             do {
-                System.out.println("Introdueix x");
+                
+                System.out.println("\n" + ANSI_CYAN + "// Introdueix x" + ANSI_RESET);
+                System.out.println("\n" + ANSI_YELLOW + "|0|1|2|\n"
+                        + ANSI_YELLOW + "|0|1|2|\n"
+                        + ANSI_YELLOW + "|0|1|2|\n");
                 x = user_input.nextInt();
-                System.out.println("Introdueix y");
+                
+                System.out.println("\n" + ANSI_CYAN + "// Introdueix y" +ANSI_RESET);
+                System.out.println("\n" + ANSI_YELLOW + "|0|0|0|\n"
+                        + ANSI_YELLOW + "|1|1|1|\n"
+                        + ANSI_YELLOW + "|2|2|2|\n");
                 y = user_input.nextInt();
+                
             } while (!board.input(x, y));
+            
+            System.out.println("\nTablero: \n");
             board.print();
+            
             running = (board.victoryCondition()==' ');
+            
         }
-        if (board.victoryCondition()==p1.getFicha()) System.out.println("El jugador " + p1.getName()  + " guanya");
-        else if (board.victoryCondition()==p2.getFicha()) System.out.println("El jugador " + p2.getName() + " guanya");
-        else System.out.println("Empat");
+        if (board.victoryCondition()==p1.getFicha()) System.out.println(ANSI_PURPLE_BACKGROUND + "El jugador " + p1.getName()  + " guanya" + ANSI_RESET);
+        else if (board.victoryCondition()==p2.getFicha()) System.out.println(ANSI_PURPLE_BACKGROUND + "El jugador " + p2.getName() + " guanya" + ANSI_RESET);
+        else System.out.println(ANSI_PURPLE_BACKGROUND + "Empat" + ANSI_RESET);
     }
 }
