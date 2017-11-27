@@ -1,23 +1,23 @@
 package model;
 
 public class Board {
-    private char[][] table;
+    private Cell[][] table;
     private int turnCount;
     
     public Board(){
         turnCount = 0;
-        table = new char[3][3];
-        for (int i = 0; i < table.length; i++){
+        table = new Cell[3][3];
+        for (int i = 0;  i < table.length; i++){
             for (int j = 0; j < table[i].length; j++){
-                table[i][j] = '-';
+                table[i][j] = new Cell();
             }
         }
     }
     
     public boolean input(int x, int y){
-        if (table[y][x]=='-'){
-            if (turnCount%2==0) table[y][x] = 'X';
-            else table[y][x] = 'O';
+        if (table[y][x].getState()=='-'){
+            if (turnCount%2==0) table[y][x].setState('X');
+            else table[y][x].setState('O');
             ++turnCount;
             return true;
         }
@@ -27,7 +27,9 @@ public class Board {
     public void print(){
         for (int i = 0; i < table.length; i++){
             for (int j = 0; j < table[i].length; j++){
-                System.out.print(table[i][j]);
+                if (j==0) System.out.print("|");
+                System.out.print(table[i][j].getState());
+                System.out.print("|");
             }
             System.out.print("\n");
         }
