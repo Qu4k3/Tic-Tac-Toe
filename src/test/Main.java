@@ -68,8 +68,8 @@ public class Main {
             running = (board.victoryCondition()==' ');
             
         }
-        if (board.victoryCondition()==p1.getFicha()) System.out.println(ANSI_PURPLE_BACKGROUND + "El jugador " + p1.getName()  + " guanya" + ANSI_RESET);
-        else if (board.victoryCondition()==p2.getFicha()) System.out.println(ANSI_PURPLE_BACKGROUND + "El jugador " + p2.getName() + " guanya" + ANSI_RESET);
-        else System.out.println(ANSI_PURPLE_BACKGROUND + "Empat" + ANSI_RESET);
+        if (board.victoryCondition()==p1.getFicha()) System.out.println("\n" + ANSI_PURPLE_BACKGROUND + "El jugador " + p1.getName()  + " guanya" + ANSI_RESET);
+        else if (board.victoryCondition()==p2.getFicha()) System.out.println("\n" + ANSI_PURPLE_BACKGROUND + "El jugador " + p2.getName() + " guanya" + ANSI_RESET);
+        else System.out.println("\n" + ANSI_PURPLE_BACKGROUND + "Empat" + ANSI_RESET);
     }
 }
