@@ -1,4 +1,4 @@
-package test;
+ package test;
 
 import java.util.Scanner;
 import jdk.nashorn.internal.objects.NativeString;
@@ -32,7 +32,7 @@ public class Main {
         
         System.out.println("\n" + p1.getName() + " comença: ");
         
-        Board board = new Board();
+        Board board = new Board(p1,p2);
         while (true){
             do {
                 System.out.println("Introdueix x");

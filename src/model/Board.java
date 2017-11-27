@@ -3,8 +3,9 @@ package model;
 public class Board {
     private Cell[][] table;
     private int turnCount;
+    private Player[] players;
     
-    public Board(){
+    public Board(Player player1, Player player2){
         turnCount = 0;
         table = new Cell[3][3];
         for (int i = 0;  i < table.length; i++){
@@ -12,12 +13,14 @@ public class Board {
                 table[i][j] = new Cell();
             }
         }
+        players = new Player[2];
+        players[0] = player1;
+        players[1] = player2;
     }
     
     public boolean input(int x, int y){
         if (table[y][x].getState()==' '){
-            if (turnCount%2==0) table[y][x].setState('X');
-            else table[y][x].setState('O');
+            table[y][x].setState(players[turnCount%2].getFicha());
             ++turnCount;
             return true;
         }
