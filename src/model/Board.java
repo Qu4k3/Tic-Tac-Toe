@@ -15,7 +15,7 @@ public class Board {
     }
     
     public boolean input(int x, int y){
-        if (table[y][x].getState()=='-'){
+        if (table[y][x].getState()==' '){
             if (turnCount%2==0) table[y][x].setState('X');
             else table[y][x].setState('O');
             ++turnCount;

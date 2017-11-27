@@ -4,7 +4,7 @@ public class Cell {
     private char state;
     
     public Cell(){
-        state = '-';
+        state = ' ';
     }
     
     public char getState(){
