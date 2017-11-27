@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner user_input = new Scanner(System.in);
+        boolean running = true;
         int x, y;
         String p1_name, p2_name;
         char p1_ficha, p2_ficha;
@@ -45,7 +46,8 @@ public class Main {
         System.out.println("\n" + ANSI_YELLOW + p1.getName() + ANSI_RESET + " comença:\n");
 
         Board board = new Board(p1,p2);
-        while (true) {
+
+        while (running){
             do {
                 System.out.println("Introdueix x");
                 x = user_input.nextInt();
@@ -53,6 +55,10 @@ public class Main {
                 y = user_input.nextInt();
             } while (!board.input(x, y));
             board.print();
+            running = (board.victoryCondition()==' ');
         }
+        if (board.victoryCondition()==p1.getFicha()) System.out.println("El jugador " + p1.getName()  + " guanya");
+        else if (board.victoryCondition()==p2.getFicha()) System.out.println("El jugador " + p2.getName() + " guanya");
+        else System.out.println("Empat");
     }
 }

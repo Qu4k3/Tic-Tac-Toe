@@ -38,4 +38,15 @@ public class Board {
         }
     }
     
+    public char victoryCondition(){
+        for (int i = 0; i < table.length; i++){
+            if ((table[i][0].getState()!=' ') && (table[i][0].getState()==table[i][1].getState()) && (table[i][1].getState()==table[i][2].getState())) return table[i][0].getState();
+            if ((table[0][i].getState()!=' ') && (table[0][i].getState()==table[1][i].getState()) && (table[1][i].getState()==table[2][i].getState())) return table[0][i].getState();
+        }
+        if ((table[0][0].getState()!=' ') && (table[0][0].getState()==table[1][1].getState()) && (table[1][1].getState()==table[2][2].getState())) return table[0][0].getState();
+        if ((table[0][2].getState()!=' ') && (table[0][2].getState()==table[1][1].getState()) && (table[1][1].getState()==table[2][0].getState())) return table[1][1].getState();
+        if (turnCount == 3*3) return 'E';
+        return ' ';
+    }
+    
 }
