@@ -1,7 +1,6 @@
 package test;
 
 import java.util.Scanner;
-import jdk.nashorn.internal.objects.NativeString;
 import model.Board;
 import model.Player;
 import static utils.Colors.*;
@@ -16,8 +15,10 @@ public class Main {
         int x, y, auxTurn = 0;
         String p1_name, p2_name;
         char p1_ficha, p2_ficha;
+        
+        System.out.println(ANSI_BLUE_BACKGROUND + " Tic-Tac-Toe " + ANSI_RESET);
 
-        System.out.println(ANSI_CYAN + "// Jugador 1, introdueix nom:" + ANSI_RESET);
+        System.out.println("\n" + ANSI_CYAN + "// Jugador 1, introdueix nom:" + ANSI_RESET);
         p1_name = user_input.nextLine();
 
         do {
@@ -47,7 +48,6 @@ public class Main {
         while (game){
             running = true;
             Board board = new Board(p1,p2);
-            System.out.println("\n" + ANSI_YELLOW + p1.getName() + ANSI_RESET + " comença:");
             while (running){
                 do {
                   
@@ -63,7 +63,7 @@ public class Main {
                     System.out.println("\n" 
                             + ANSI_YELLOW + "|0|1|2|\n"
                             + ANSI_YELLOW + "|0|1|2|\n"
-                            + ANSI_YELLOW + "|0|1|2|\n");
+                            + ANSI_YELLOW + "|0|1|2|\n" + ANSI_RESET);
                     System.out.print("> ");
                     x = user_input.nextInt();
 
@@ -71,13 +71,13 @@ public class Main {
                     System.out.println("\n" 
                             + ANSI_YELLOW + "|0|0|0|\n"
                             + ANSI_YELLOW + "|1|1|1|\n"
-                            + ANSI_YELLOW + "|2|2|2|\n");
+                            + ANSI_YELLOW + "|2|2|2|\n" + ANSI_RESET);
                     System.out.print("> ");
                     y = user_input.nextInt();
 
                 } while (!board.input(x, y));
 
-                System.out.println("\nTablero: \n");
+                System.out.println("\n" + ANSI_GREEN + "Estat del taulell" + ANSI_RESET + "\n");
                 board.print();
 
                 running = (board.victoryCondition()==' ');
@@ -87,9 +87,10 @@ public class Main {
         
             else if (board.victoryCondition()==p2.getFicha()) System.out.println("\n" + ANSI_PURPLE_BACKGROUND + ANSI_WHITE + " El jugador " + p2.getName() + " guanya " + ANSI_RESET);
 
-            else System.out.println("\n" + ANSI_PURPLE_BACKGROUND + "Empat" + ANSI_RESET);
+            else System.out.println("\n" + ANSI_PURPLE_BACKGROUND + ANSI_WHITE + " Empat " + ANSI_RESET);
             user_input.nextLine();
-            System.out.println("Vols tornar a jugar?");
+            System.out.println("\n" + ANSI_CYAN + "// Vols tornar a jugar? (s/n)" + ANSI_RESET);
+            System.out.println("\n> ");
             try {
                 game = (user_input.nextLine().toLowerCase().charAt(0)=='s');
             }
