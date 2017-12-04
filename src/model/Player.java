@@ -7,6 +7,7 @@ public class Player {
 
     public Player(String name, char ficha) {
         this.name = name;
+        this.ficha = ficha;
     }
 
     public String getName() {
