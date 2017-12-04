@@ -53,9 +53,11 @@ public class Board {
         return c;
     }
     
+    
+    
     public char equals3(char a, char b, char c){
         if ((a!=' ') && ((a == b) && (b == c))) return a;
-        if ((a!=' ') && ((a != b) && b !=' ') || (b != c && c != ' ')) return 'E'; 
+        if ((a!=' ') && ((a != b) && b !=' ') && (b != c && c != ' ')) return 'E'; 
         return ' ';
     }
     
