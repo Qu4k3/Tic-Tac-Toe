@@ -46,10 +46,8 @@ public class Board {
             c = eval(table[i][0].getState(),table[i][1].getState(),table[i][2].getState());
             c = eval(table[0][i].getState(),table[1][i].getState(),table[2][i].getState());
         }
-        if (winner != ' '){
-            c  = eval(table[0][0].getState(),table[1][1].getState(),table[2][2].getState());
-            c  = eval(table[2][0].getState(),table[1][1].getState(),table[0][2].getState());
-        }
+        if (winner == ' ') c  = eval(table[0][0].getState(),table[1][1].getState(),table[2][2].getState());
+        if (winner == ' ') c  = eval(table[2][0].getState(),table[1][1].getState(),table[0][2].getState());
         return c;
     }
     
@@ -58,7 +56,16 @@ public class Board {
     }
     
     boolean canWin(char a, char b, char c){
-        return !((a!=' ' && ((a!='b' && b!=' ') || (a!='c' && c!=' '))) || ((b!=' ') && (b!=c) && (c!=' ')));
+        char t = ' ';
+        if (a!= ' ') t = a;
+        if (b!= ' '){
+            if (t==' ') t = b;
+            else if (b != t) return false;
+        }
+        if (c!= ' '){
+            if (t!=' ' && c != t) return false;
+        }
+         return true;
     }
     
     public char eval(char a, char b, char c){
@@ -71,7 +78,9 @@ public class Board {
         return 'E';
     }
     
-    public boolean winner(char c){
-        return (c!=' ' && c!= 'E');
+    public char getWinner(){
+        return winner;
     }
+    
+    
 }

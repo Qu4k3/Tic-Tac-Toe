@@ -71,11 +71,11 @@ public class Main {
                 board.print();
 
                 running = (board.victoryCondition()==' ');
-
+                
             }
-            if (board.victoryCondition()==p1.getFicha()) System.out.println("\n" + ANSI_PURPLE_BACKGROUND + ANSI_WHITE + " El jugador " + p1.getName()  + " guanya " + ANSI_RESET);
+            if (board.getWinner()==p1.getFicha()) System.out.println("\n" + ANSI_PURPLE_BACKGROUND + ANSI_WHITE + " El jugador " + p1.getName()  + " guanya " + ANSI_RESET);
         
-            else if (board.victoryCondition()==p2.getFicha()) System.out.println("\n" + ANSI_PURPLE_BACKGROUND + ANSI_WHITE + " El jugador " + p2.getName() + " guanya " + ANSI_RESET);
+            else if (board.getWinner()==p2.getFicha()) System.out.println("\n" + ANSI_PURPLE_BACKGROUND + ANSI_WHITE + " El jugador " + p2.getName() + " guanya " + ANSI_RESET);
 
             else System.out.println("\n" + ANSI_PURPLE_BACKGROUND + "Empat" + ANSI_RESET);
             user_input.nextLine();
