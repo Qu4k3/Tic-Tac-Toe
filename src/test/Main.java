@@ -90,7 +90,7 @@ public class Main {
             else System.out.println("\n" + ANSI_PURPLE_BACKGROUND + ANSI_WHITE + " Empat " + ANSI_RESET);
             user_input.nextLine();
             System.out.println("\n" + ANSI_CYAN + "// Vols tornar a jugar? (s/n)" + ANSI_RESET);
-            System.out.println("\n> ");
+            System.out.print("\n> ");
             try {
                 game = (user_input.nextLine().toLowerCase().charAt(0)=='s');
             }
@@ -98,7 +98,7 @@ public class Main {
                 game = false;
             }
         }
-        System.out.println("Fi del joc.");
+        System.out.println("\n" + ANSI_BLUE_BACKGROUND + " Fi del joc, gràcies per jugar " + ANSI_RESET);
         
         
     }
