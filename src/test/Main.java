@@ -55,9 +55,7 @@ public class Main {
                         System.out.println("\nÉs el torn de: " + ANSI_YELLOW + p1.getName() + ANSI_RESET);
                     } else {
                         System.out.println("\nÉs el torn de " + ANSI_YELLOW + p2.getName() + ANSI_RESET);
-                    }
-
-                    auxTurn++;
+                    }                    
 
                     System.out.println("\n" + ANSI_CYAN + "// Introdueix posició x" + ANSI_RESET);
                     System.out.println("\n" 
@@ -76,6 +74,8 @@ public class Main {
                     y = user_input.nextInt();
 
                 } while (!board.input(x, y));
+                
+                auxTurn++;
 
                 System.out.println("\n" + ANSI_GREEN + "Estat del taulell" + ANSI_RESET + "\n");
                 board.print();
