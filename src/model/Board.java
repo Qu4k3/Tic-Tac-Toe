@@ -4,9 +4,11 @@ public class Board {
     private Cell[][] table;
     private int turnCount;
     private Player[] players;
+    private char winner;
     
     public Board(Player player1, Player player2){
         turnCount = 0;
+        winner = ' ';
         table = new Cell[3][3];
         for (int i = 0;  i < table.length; i++){
             for (int j = 0; j < table[i].length; j++){
@@ -39,26 +41,34 @@ public class Board {
     }
     
     public char victoryCondition(){
-        if (turnCount == 3*3) return 'E';
-        char c;
-        for (int i = 0; i < table.length; i++){
-            c = equals3(table[i][0].getState(),table[i][1].getState(),table[i][2].getState());
-            if (winner(c)) return c;
-            c = equals3(table[0][i].getState(),table[1][i].getState(),table[2][i].getState());
-            if (winner(c)) return c;
+        char c = ' ';
+        for (int i = 0; i < table.length && winner == ' '; i++){
+            c = eval(table[i][0].getState(),table[i][1].getState(),table[i][2].getState());
+            c = eval(table[0][i].getState(),table[1][i].getState(),table[2][i].getState());
         }
-        c  = equals3(table[0][0].getState(),table[1][1].getState(),table[2][2].getState());
-        if (winner(c))return c;
-        c  = equals3(table[2][0].getState(),table[1][1].getState(),table[0][2].getState());
+        if (winner != ' '){
+            c  = eval(table[0][0].getState(),table[1][1].getState(),table[2][2].getState());
+            c  = eval(table[2][0].getState(),table[1][1].getState(),table[0][2].getState());
+        }
         return c;
     }
     
+    boolean victory(char a, char b, char c){
+        return ((a!=' ') && ((a == b) && (b == c)));
+    }
     
+    boolean canWin(char a, char b, char c){
+        return !((a!=' ' && ((a!='b' && b!=' ') || (a!='c' && c!=' '))) || ((b!=' ') && (b!=c) && (c!=' ')));
+    }
     
-    public char equals3(char a, char b, char c){
-        if ((a!=' ') && ((a == b) && (b == c))) return a;
-        if ((a!=' ') && ((a != b) && b !=' ') && (b != c && c != ' ')) return 'E'; 
-        return ' ';
+    public char eval(char a, char b, char c){
+        if (winner!=' ') return winner;
+        if (victory(a,b,c)){
+            winner = a;
+            return a;
+        }
+        if (canWin(a,b,c)) return ' ';
+        return 'E';
     }
     
     public boolean winner(char c){
