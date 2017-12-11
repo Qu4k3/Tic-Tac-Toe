@@ -1,17 +1,18 @@
 package model;
 
 public class Cell {
+
     private char state;
-    
-    public Cell(){
+
+    public Cell() {
         state = ' ';
     }
-    
-    public char getState(){
+
+    public char getState() {
         return state;
     }
-    
-    public void setState(char state){
+
+    public void setState(char state) {
         this.state = state;
     }
 }
