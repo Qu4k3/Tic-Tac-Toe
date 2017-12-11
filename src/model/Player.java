@@ -1,7 +1,7 @@
 package model;
 
 public class Player {
-    
+
     String name;
     char ficha;
 
@@ -25,5 +25,5 @@ public class Player {
     public void setFicha(char ficha) {
         this.ficha = ficha;
     }
-    
+
 }
